@@ -43,168 +43,153 @@ export default function MobileLayout({ children }: MobileLayoutProps) {
         <Box
             sx={{
                 display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                minHeight: '100vh',
-                backgroundColor: '#f5f5f5',
+                flexDirection: 'column',
+                height: '100vh',
+                width: '100%',
+                overflow: 'hidden',
+                backgroundColor: '#fff',
             }}
         >
-            {/* Mobile Container */}
-            <Box
+            {/* Header */}
+            <AppBar
+                position="static"
+                elevation={1}
                 sx={{
-                    width: '100%',
-                    maxWidth: '430px',
-                    height: '100vh',
-                    maxHeight: '932px',
                     backgroundColor: '#fff',
-                    position: 'relative',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    boxShadow: '0 0 20px rgba(0,0,0,0.1)',
-                    overflow: 'hidden',
+                    color: '#000',
+                    flexShrink: 0,
                 }}
             >
-                {/* Header */}
-                <AppBar
-                    position="static"
-                    elevation={1}
-                    sx={{
-                        backgroundColor: '#fff',
-                        color: '#000',
-                    }}
-                >
-                    <Toolbar sx={{ justifyContent: 'space-between' }}>
-                        <IconButton
-                            edge="start"
-                            color="inherit"
-                            onClick={toggleDrawer(true)}
-                        >
-                            <MenuIcon />
-                        </IconButton>
-
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                            <Typography variant="h6" sx={{ fontWeight: 600 }}>
-                                همیار ذهن
-                            </Typography>
-                            <span style={{ fontSize: '24px' }}>🧠</span>
-                        </Box>
-
-                        <IconButton edge="end" color="inherit">
-                            <NotificationsIcon />
-                        </IconButton>
-                    </Toolbar>
-                </AppBar>
-
-                {/* Drawer */}
-                <Drawer
-                    anchor="left"
-                    open={drawerOpen}
-                    onClose={toggleDrawer(false)}
-                >
-                    <Box
-                        sx={{ width: 280 }}
-                        role="presentation"
-                        onClick={toggleDrawer(false)}
+                <Toolbar sx={{ justifyContent: 'space-between' }}>
+                    <IconButton
+                        edge="start"
+                        color="inherit"
+                        onClick={toggleDrawer(true)}
                     >
-                        <Box sx={{ p: 3, borderBottom: '1px solid #eee' }}>
-                            <Typography variant="h6" sx={{ fontWeight: 600 }}>
-                                منو
-                            </Typography>
-                        </Box>
-                        <List>
-                            <ListItem disablePadding>
-                                <ListItemButton>
-                                    <ListItemIcon>
-                                        <LightbulbIcon />
-                                    </ListItemIcon>
-                                    <ListItemText primary="بوم افکار" />
-                                </ListItemButton>
-                            </ListItem>
-                            <ListItem disablePadding>
-                                <ListItemButton>
-                                    <ListItemIcon>
-                                        <PsychologyIcon />
-                                    </ListItemIcon>
-                                    <ListItemText primary="همیار" />
-                                </ListItemButton>
-                            </ListItem>
-                            <ListItem disablePadding>
-                                <ListItemButton>
-                                    <ListItemIcon>
-                                        <QuizIcon />
-                                    </ListItemIcon>
-                                    <ListItemText primary="تست‌ها" />
-                                </ListItemButton>
-                            </ListItem>
-                            <ListItem disablePadding>
-                                <ListItemButton>
-                                    <ListItemIcon>
-                                        <PersonIcon />
-                                    </ListItemIcon>
-                                    <ListItemText primary="پروفایل" />
-                                </ListItemButton>
-                            </ListItem>
-                        </List>
+                        <MenuIcon />
+                    </IconButton>
+
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                            همیار ذهن
+                        </Typography>
+                        <span style={{ fontSize: '24px' }}>🧠</span>
                     </Box>
-                </Drawer>
 
-                {/* Main Content */}
+                    <IconButton edge="end" color="inherit">
+                        <NotificationsIcon />
+                    </IconButton>
+                </Toolbar>
+            </AppBar>
+
+            {/* Drawer */}
+            <Drawer
+                anchor="right"
+                open={drawerOpen}
+                onClose={toggleDrawer(false)}
+            >
                 <Box
-                    component="main"
-                    sx={{
-                        flex: 1,
-                        overflow: 'auto',
-                        pb: 8,
-                    }}
+                    sx={{ width: 280 }}
+                    role="presentation"
+                    onClick={toggleDrawer(false)}
                 >
-                    {children}
+                    <Box sx={{ p: 3, borderBottom: '1px solid #eee' }}>
+                        <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                            منو
+                        </Typography>
+                    </Box>
+                    <List>
+                        <ListItem disablePadding>
+                            <ListItemButton>
+                                <ListItemIcon sx={{ minWidth: 40 }}>
+                                    <LightbulbIcon />
+                                </ListItemIcon>
+                                <ListItemText primary="بوم افکار" />
+                            </ListItemButton>
+                        </ListItem>
+                        <ListItem disablePadding>
+                            <ListItemButton>
+                                <ListItemIcon sx={{ minWidth: 40 }}>
+                                    <PsychologyIcon />
+                                </ListItemIcon>
+                                <ListItemText primary="همیار" />
+                            </ListItemButton>
+                        </ListItem>
+                        <ListItem disablePadding>
+                            <ListItemButton>
+                                <ListItemIcon sx={{ minWidth: 40 }}>
+                                    <QuizIcon />
+                                </ListItemIcon>
+                                <ListItemText primary="تست‌ها" />
+                            </ListItemButton>
+                        </ListItem>
+                        <ListItem disablePadding>
+                            <ListItemButton>
+                                <ListItemIcon sx={{ minWidth: 40 }}>
+                                    <PersonIcon />
+                                </ListItemIcon>
+                                <ListItemText primary="پروفایل" />
+                            </ListItemButton>
+                        </ListItem>
+                    </List>
                 </Box>
+            </Drawer>
 
-                {/* Bottom Navigation */}
-                <Paper
-                    sx={{
-                        position: 'fixed',
-                        bottom: 0,
-                        left: '50%',
-                        transform: 'translateX(-50%)',
-                        width: '100%',
-                        maxWidth: '430px',
-                        zIndex: 1000,
-                    }}
-                    elevation={3}
-                >
-                    <BottomNavigation
-                        value={bottomNavValue}
-                        onChange={(event, newValue) => {
-                            setBottomNavValue(newValue)
-                        }}
-                        showLabels
-                        sx={{
-                            height: 70,
-                            '& .MuiBottomNavigationAction-root': {
-                                minWidth: 'auto',
-                            },
-                        }}
-                    >
-                        <BottomNavigationAction
-                            label="بوم افکار"
-                            icon={<LightbulbIcon />}
-                        />
-                        <BottomNavigationAction
-                            label="همیار"
-                            icon={<PsychologyIcon />}
-                        />
-                        <BottomNavigationAction
-                            label="تست‌ها"
-                            icon={<QuizIcon />}
-                        />
-                        <BottomNavigationAction
-                            label="پروفایل"
-                            icon={<PersonIcon />}
-                        />
-                    </BottomNavigation>
-                </Paper>
+            {/* Main Content */}
+            <Box
+                component="main"
+                sx={{
+                    flex: 1,
+                    overflow: 'auto',
+                    overflowY: 'scroll',
+                    scrollbarGutter: 'stable',
+                    WebkitOverflowScrolling: 'touch',
+                    px: 2,
+                    py: 2,
+                }}
+            >
+                {children}
             </Box>
+
+            {/* Bottom Navigation */}
+            <Paper
+                sx={{
+                    flexShrink: 0,
+                    borderTop: '1px solid #eee',
+                }}
+                elevation={3}
+            >
+                <BottomNavigation
+                    value={bottomNavValue}
+                    onChange={(event, newValue) => {
+                        setBottomNavValue(newValue)
+                    }}
+                    showLabels
+                    sx={{
+                        height: 70,
+                        '& .MuiBottomNavigationAction-root': {
+                            minWidth: 'auto',
+                        },
+                    }}
+                >
+                    <BottomNavigationAction
+                        label="بوم افکار"
+                        icon={<LightbulbIcon />}
+                    />
+                    <BottomNavigationAction
+                        label="همیار"
+                        icon={<PsychologyIcon />}
+                    />
+                    <BottomNavigationAction
+                        label="تست‌ها"
+                        icon={<QuizIcon />}
+                    />
+                    <BottomNavigationAction
+                        label="پروفایل"
+                        icon={<PersonIcon />}
+                    />
+                </BottomNavigation>
+            </Paper>
         </Box>
     )
 }
