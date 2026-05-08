@@ -1,3 +1,5 @@
+'use client'
+
 import { Controller, type Control } from 'react-hook-form';
 import { Chip, Divider, TextField } from '@mui/material';
 import { InfoBox, PsychiatricSection, SubLabel } from '../ui';

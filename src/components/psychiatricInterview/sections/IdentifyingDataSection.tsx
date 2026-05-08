@@ -1,3 +1,5 @@
+'use client'
+
 import { Controller, type Control, type FieldErrors } from 'react-hook-form';
 import {
   Box,

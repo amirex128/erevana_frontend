@@ -1,4 +1,3 @@
-// components/MobileLayout.tsx
 'use client'
 
 import { ReactNode, useState } from 'react'
@@ -26,6 +25,7 @@ import {
     Quiz as QuizIcon,
     Person as PersonIcon,
 } from '@mui/icons-material'
+import Link from 'next/link'
 
 interface MobileLayoutProps {
     children: ReactNode
@@ -47,7 +47,6 @@ export default function MobileLayout({ children }: MobileLayoutProps) {
                 height: '100vh',
                 width: '100%',
                 overflow: 'hidden',
-                backgroundColor: '#fff',
             }}
         >
             {/* Header */}
@@ -55,9 +54,10 @@ export default function MobileLayout({ children }: MobileLayoutProps) {
                 position="static"
                 elevation={1}
                 sx={{
-                    backgroundColor: '#fff',
-                    color: '#000',
+                    bgcolor: 'primary.main',
+                    color:'primary.contrastText',
                     flexShrink: 0,
+                    zIndex:9999
                 }}
             >
                 <Toolbar sx={{ justifyContent: 'space-between' }}>
@@ -84,7 +84,7 @@ export default function MobileLayout({ children }: MobileLayoutProps) {
 
             {/* Drawer */}
             <Drawer
-                anchor="right"
+                anchor="left"
                 open={drawerOpen}
                 onClose={toggleDrawer(false)}
             >
@@ -153,39 +153,52 @@ export default function MobileLayout({ children }: MobileLayoutProps) {
 
             {/* Bottom Navigation */}
             <Paper
-                sx={{
-                    flexShrink: 0,
-                    borderTop: '1px solid #eee',
-                }}
                 elevation={3}
             >
                 <BottomNavigation
+
                     value={bottomNavValue}
                     onChange={(event, newValue) => {
                         setBottomNavValue(newValue)
                     }}
                     showLabels
                     sx={{
-                        height: 70,
+                        height: 60,
                         '& .MuiBottomNavigationAction-root': {
                             minWidth: 'auto',
                         },
                     }}
                 >
                     <BottomNavigationAction
+                        sx={{}}
+
                         label="بوم افکار"
+                        href="/mobile/boom"
+                        component={Link}
                         icon={<LightbulbIcon />}
                     />
                     <BottomNavigationAction
+                        sx={{}}
+
                         label="همیار"
+                        href="/mobile/chat"
+                        component={Link}
                         icon={<PsychologyIcon />}
                     />
                     <BottomNavigationAction
+                        sx={{}}
+
                         label="تست‌ها"
+                        href="/mobile/tests"
+                        component={Link}
                         icon={<QuizIcon />}
                     />
                     <BottomNavigationAction
+                        sx={{}}
+
                         label="پروفایل"
+                        href="/mobile/profile"
+                        component={Link}
                         icon={<PersonIcon />}
                     />
                 </BottomNavigation>
