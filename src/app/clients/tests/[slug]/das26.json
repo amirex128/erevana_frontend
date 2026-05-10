@@ -1,0 +1,162 @@
+[
+  {
+    "Id": 1,
+    "Order": 1,
+    "Type": "radio",
+    "Question": "اگر مرتکب اشتباهی شوم مردم به من به عنوان فردی کمتر از آنچه هستم می نگرند.",
+    "Description": "نیاز به راضی کردن دیگران",
+    "QuizOption": [
+      { "NumberId": 1, "Text": "کاملاً مخالفم" },
+      { "NumberId": 2, "Text": "بسیار مخالفم" },
+      { "NumberId": 3, "Text": "اندکی مخالفم" },
+      { "NumberId": 4, "Text": "بی تفاوت" },
+      { "NumberId": 5, "Text": "اندکی موافقم" },
+      { "NumberId": 6, "Text": "بسیار موافقم" },
+      { "NumberId": 7, "Text": "کاملاً موافقم" }
+    ]
+  },
+  {
+    "Id": 2,
+    "Order": 2,
+    "Type": "radio",
+    "Question": "اگر همه وقت خود را در تمام کارها موفق نباشم مورد احترام دیگران قرار نخواهم گرفت.",
+    "Description": "نیاز به راضی کردن دیگران",
+    "QuizOption": [
+      { "NumberId": 1, "Text": "کاملاً مخالفم" },
+      { "NumberId": 2, "Text": "بسیار مخالفم" },
+      { "NumberId": 3, "Text": "اندکی مخالفم" },
+      { "NumberId": 4, "Text": "بی تفاوت" },
+      { "NumberId": 5, "Text": "اندکی موافقم" },
+      { "NumberId": 6, "Text": "بسیار موافقم" },
+      { "NumberId": 7, "Text": "کاملاً موافقم" }
+    ]
+  },
+  {
+    "Id": 3,
+    "Order": 3,
+    "Type": "radio",
+    "Question": "حتی ریسک های کوچک هم کاری احمقانه است چرا که امکان عدم موفقیت در آن وجود دارد.",
+    "Description": "کمال طلبی",
+    "QuizOption": [
+      { "NumberId": 1, "Text": "کاملاً مخالفم" },
+      { "NumberId": 2, "Text": "بسیار مخالفم" },
+      { "NumberId": 3, "Text": "اندکی مخالفم" },
+      { "NumberId": 4, "Text": "بی تفاوت" },
+      { "NumberId": 5, "Text": "اندکی موافقم" },
+      { "NumberId": 6, "Text": "بسیار موافقم" },
+      { "NumberId": 7, "Text": "کاملاً موافقم" }
+    ]
+  },
+  {
+    "Id": 4,
+    "Order": 4,
+    "Type": "radio",
+    "Question": "من نمی توانم خوشحال باشم مگر بیشتر کسانی که مرا می شناسند تحسینم نمایند.",
+    "Description": "نیاز به راضی کردن دیگران",
+    "QuizOption": [
+      { "NumberId": 1, "Text": "کاملاً مخالفم" },
+      { "NumberId": 2, "Text": "بسیار مخالفم" },
+      { "NumberId": 3, "Text": "اندکی مخالفم" },
+      { "NumberId": 4, "Text": "بی تفاوت" },
+      { "NumberId": 5, "Text": "اندکی موافقم" },
+      { "NumberId": 6, "Text": "بسیار موافقم" },
+      { "NumberId": 7, "Text": "کاملاً موافقم" }
+    ]
+  },
+  {
+    "Id": 5,
+    "Order": 5,
+    "Type": "radio",
+    "Question": "اگر شخصی تقاضای کمک نماید نشانگر ضعف اوست.",
+    "Description": "کمال طلبی",
+    "QuizOption": [
+      { "NumberId": 1, "Text": "کاملاً مخالفم" },
+      { "NumberId": 2, "Text": "بسیار مخالفم" },
+      { "NumberId": 3, "Text": "اندکی مخالفم" },
+      { "NumberId": 4, "Text": "بی تفاوت" },
+      { "NumberId": 5, "Text": "اندکی موافقم" },
+      { "NumberId": 6, "Text": "بسیار موافقم" },
+      { "NumberId": 7, "Text": "کاملاً موافقم" }
+    ]
+  },
+  {
+    "Id": 6,
+    "Order": 6,
+    "Type": "radio",
+    "Question": "اگر من نتوانم به خوبی دیگران از عهده کارها برآیم آدم حقیری هستم.",
+    "Description": "کمال طلبی",
+    "QuizOption": [
+      { "NumberId": 1, "Text": "کاملاً مخالفم" },
+      { "NumberId": 2, "Text": "بسیار مخالفم" },
+      { "NumberId": 3, "Text": "اندکی مخالفم" },
+      { "NumberId": 4, "Text": "بی تفاوت" },
+      { "NumberId": 5, "Text": "اندکی موافقم" },
+      { "NumberId": 6, "Text": "بسیار موافقم" },
+      { "NumberId": 7, "Text": "کاملاً موافقم" }
+    ]
+  },
+  {
+    "Id": 7,
+    "Order": 7,
+    "Type": "radio",
+    "Question": "اگر در کارم شکست بخورم آدم شکست خورده ای تلقی می شوم.",
+    "Description": "کمال طلبی",
+    "QuizOption": [
+      { "NumberId": 1, "Text": "کاملاً مخالفم" },
+      { "NumberId": 2, "Text": "بسیار مخالفم" },
+      { "NumberId": 3, "Text": "اندکی مخالفم" },
+      { "NumberId": 4, "Text": "بی تفاوت" },
+      { "NumberId": 5, "Text": "اندکی موافقم" },
+      { "NumberId": 6, "Text": "بسیار موافقم" },
+      { "NumberId": 7, "Text": "کاملاً موافقم" }
+    ]
+  },
+  {
+    "Id": 8,
+    "Order": 8,
+    "Type": "radio",
+    "Question": "اگر نتوانم کاری را به خوبی انجام دهم انجام دادن آن کار اصلاً درست نیست.",
+    "Description": "کمال طلبی",
+    "QuizOption": [
+      { "NumberId": 1, "Text": "کاملاً مخالفم" },
+      { "NumberId": 2, "Text": "بسیار مخالفم" },
+      { "NumberId": 3, "Text": "اندکی مخالفم" },
+      { "NumberId": 4, "Text": "بی تفاوت" },
+      { "NumberId": 5, "Text": "اندکی موافقم" },
+      { "NumberId": 6, "Text": "بسیار موافقم" },
+      { "NumberId": 7, "Text": "کاملاً موافقم" }
+    ]
+  },
+  {
+    "Id": 9,
+    "Order": 9,
+    "Type": "radio",
+    "Question": "اگر شخصی در بعضی موارد با من هم عقیده نباشد بدان معناست که مرا دوست ندارد.",
+    "Description": "کمال طلبی",
+    "QuizOption": [
+      { "NumberId": 1, "Text": "کاملاً مخالفم" },
+      { "NumberId": 2, "Text": "بسیار مخالفم" },
+      { "NumberId": 3, "Text": "اندکی مخالفم" },
+      { "NumberId": 4, "Text": "بی تفاوت" },
+      { "NumberId": 5, "Text": "اندکی موافقم" },
+      { "NumberId": 6, "Text": "بسیار موافقم" },
+      { "NumberId": 7, "Text": "کاملاً موافقم" }
+    ]
+  },
+  {
+    "Id": 10,
+    "Order": 10,
+    "Type": "radio",
+    "Question": "اگر من شکست جزئی بخورم انگار که شکست کامل را تحمل کرده ام.",
+    "Description": "کمال طلبی",
+    "QuizOption": [
+      { "NumberId": 1, "Text": "کاملاً مخالفم" },
+      { "NumberId": 2, "Text": "بسیار مخالفم" },
+      { "NumberId": 3, "Text": "اندکی مخالفم" },
+      { "NumberId": 4, "Text": "بی تفاوت" },
+      { "NumberId": 5, "Text": "اندکی موافقم" },
+      { "NumberId": 6, "Text": "بسیار موافقم" },
+      { "NumberId": 7, "Text": "کاملاً موافقم" }
+    ]
+  }
+]

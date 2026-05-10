@@ -31,7 +31,7 @@ interface MobileLayoutProps {
     children: ReactNode
 }
 
-export default function MobileLayout({ children }: MobileLayoutProps) {
+export default function ClientsLayout({ children }: MobileLayoutProps) {
     const [drawerOpen, setDrawerOpen] = useState(false)
     const [bottomNavValue, setBottomNavValue] = useState(0)
 
@@ -173,7 +173,7 @@ export default function MobileLayout({ children }: MobileLayoutProps) {
                         sx={{}}
 
                         label="بوم افکار"
-                        href="/mobile/boom"
+                        href="/clients/boom"
                         component={Link}
                         icon={<LightbulbIcon />}
                     />
@@ -181,7 +181,7 @@ export default function MobileLayout({ children }: MobileLayoutProps) {
                         sx={{}}
 
                         label="همیار"
-                        href="/mobile/chat"
+                        href="/clients/chat"
                         component={Link}
                         icon={<PsychologyIcon />}
                     />
@@ -189,7 +189,7 @@ export default function MobileLayout({ children }: MobileLayoutProps) {
                         sx={{}}
 
                         label="تست‌ها"
-                        href="/mobile/tests"
+                        href="/clients/tests"
                         component={Link}
                         icon={<QuizIcon />}
                     />
@@ -197,7 +197,7 @@ export default function MobileLayout({ children }: MobileLayoutProps) {
                         sx={{}}
 
                         label="پروفایل"
-                        href="/mobile/profile"
+                        href="/clients/profile"
                         component={Link}
                         icon={<PersonIcon />}
                     />

@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import ChatContainer from "@/app/mobile/chat/ChatContainer";
+import ChatContainer from "@/app/clients/chat/ChatContainer";
 
 export default function ChatPage() {
     return (

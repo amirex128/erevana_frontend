@@ -48,8 +48,6 @@ export default function ChatContainer() {
 
     return (
         <Box
-            className="rounded-lg"
-
             sx={{
                 display: 'flex',
                 flexDirection: 'column',

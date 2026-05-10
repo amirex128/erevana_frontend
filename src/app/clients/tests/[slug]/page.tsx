@@ -5,6 +5,7 @@ import QuizGenerator, {QuizForm, QuizResult} from "@/components/quiz/QuizeGenera
 
 import csq from "./csq.json";
 import das26 from "./das26.json";
+import cognitive from "./cognitive.json";
 
 export default function DynamicTestPage({params}: { params: Promise<{ slug: string }> }) {
     const {slug} = use(params);
@@ -16,6 +17,9 @@ export default function DynamicTestPage({params}: { params: Promise<{ slug: stri
 
             case 'das26':
                 return das26 as QuizForm[];
+
+            case 'cognitive':
+                return cognitive as QuizForm[];
 
             default:
                 return [];

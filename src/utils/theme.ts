@@ -7,7 +7,6 @@ export const theme = createTheme({
     direction: 'rtl',
 
     shape: {
-        borderRadius: 14,
     },
 
     typography: {
@@ -114,7 +113,6 @@ export const theme = createTheme({
         MuiButton: {
             styleOverrides: {
                 root: {
-                    borderRadius: 14,
                     textTransform: 'none',
                     fontWeight: 700,
                     boxShadow: 'none',
@@ -129,7 +127,6 @@ export const theme = createTheme({
         MuiCard: {
             styleOverrides: {
                 root: {
-                    borderRadius: 20,
                     border: '1px solid rgba(15, 23, 42, 0.06)',
                     boxShadow: '0 4px 20px rgba(15, 23, 42, 0.04)',
                     backgroundImage: 'none',
@@ -181,7 +178,6 @@ export const theme = createTheme({
         MuiOutlinedInput: {
             styleOverrides: {
                 root: {
-                    borderRadius: 14,
 
                     '&:hover .MuiOutlinedInput-notchedOutline': {
                         borderColor: '#06b6d4',
@@ -198,7 +194,6 @@ export const theme = createTheme({
         MuiChip: {
             styleOverrides: {
                 root: {
-                    borderRadius: 10,
                     fontWeight: 600,
                 },
             },
