@@ -2,7 +2,7 @@
 
 import { Paper, Typography } from '@mui/material';
 
-export function PsychiatricInterviewHeader() {
+export function InterviewHeader() {
   return (
     <Paper elevation={2} sx={{ p: 3, mb: 3, textAlign: 'center', bgcolor: 'primary.main', color: 'white' }}>
       <Typography variant="h5" sx={{ fontWeight: 700 }}>

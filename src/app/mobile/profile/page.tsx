@@ -2,10 +2,9 @@
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Alert, Box, Container } from '@mui/material';
+import {Alert, Box, Button, Container} from '@mui/material';
 import { psychiatricInterviewSchema, type PsychiatricInterviewFormData } from '@/components/psychiatricInterview/schema';
-import { PsychiatricInterviewHeader } from '@/components/psychiatricInterview/PsychiatricInterviewHeader';
-import { SubmitBar } from '@/components/psychiatricInterview/SubmitBar';
+import { InterviewHeader } from '@/components/psychiatricInterview/InterviewHeader';
 import { ChiefComplaintSection } from '@/components/psychiatricInterview/sections/ChiefComplaintSection';
 import { DiagnosisSection } from '@/components/psychiatricInterview/sections/DiagnosisSection';
 import { FamilyHistorySection } from '@/components/psychiatricInterview/sections/FamilyHistorySection';
@@ -37,7 +36,7 @@ export default function PsychiatricInterviewForm() {
 
     return (
         <Container maxWidth="md" sx={{ py: 4, direction: 'rtl' }}>
-            <PsychiatricInterviewHeader />
+            <InterviewHeader />
 
             {isSubmitSuccessful && (
                 <Alert severity="success" sx={{ mb: 2 }}>
@@ -57,7 +56,11 @@ export default function PsychiatricInterviewForm() {
                 <PrognosisSection control={control} />
                 <TreatmentPlanSection control={control} />
 
-                <SubmitBar />
+                <Box sx={{ mt: 3, display: 'flex', justifyContent: 'center' }}>
+                    <Button color="info" type="submit" variant="contained" size="large" sx={{ px: 5 }}>
+                        ثبت فرم
+                    </Button>
+                </Box>
             </Box>
         </Container>
     );
