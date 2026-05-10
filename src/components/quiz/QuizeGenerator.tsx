@@ -5,52 +5,18 @@ import {
     Card,
     CardContent,
     Typography,
-    RadioGroup,
-    FormControlLabel,
-    Radio,
-    Checkbox,
-    FormGroup,
-    Select,
-    MenuItem,
     TextField,
     Alert,
     Button,
     Chip,
     LinearProgress,
-    InputLabel,
-    FormControl,
-    OutlinedInput,
+
 } from "@mui/material";
-
-// ─── Types ────────────────────────────────────────────────────────────────────
-
-export interface QuizOption {
-    NumberId: number;
-    Text: string;
-}
-
-export interface QuizForm {
-    Id: number;
-    Order: number;
-    Type: "radio" | "checkbox" | "selectbox" | "multiselectbox" | "textarea";
-    Question: string;
-    Description: string;
-    QuizOption?: QuizOption[];
-}
-
-export interface QuizResult {
-    Id: number;
-    Type: QuizForm["Type"];
-    Question: string;
-    Description: string;
-    QuizOption?: QuizOption[];
-    QuizAnswer: QuizOption[];
-}
-
-interface QuizGeneratorProps {
-    quizzes: QuizForm[];
-    setResults: React.Dispatch<React.SetStateAction<QuizResult[]>>;
-}
+import {QuizForm, QuizGeneratorProps, QuizOption, QuizResult} from "@/components/quiz/types";
+import RadioField from "@/components/quiz/RadioField";
+import CheckboxField from "@/components/quiz/CheckboxField";
+import SelectboxField from "@/components/quiz/SelectboxField";
+import MultiSelectboxField from "@/components/quiz/MultiSelectboxField";
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -92,134 +58,6 @@ function buildDefaults(quizzes: QuizForm[]): Record<string, unknown> {
     return defaults;
 }
 
-// ─── Field Components ─────────────────────────────────────────────────────────
-
-function RadioField({
-                        options,
-                        value,
-                        onChange,
-                    }: {
-    options: QuizOption[];
-    value: string;
-    onChange: (v: string) => void;
-}) {
-    return (
-        <RadioGroup value={value} onChange={(e) => onChange(e.target.value)}>
-            {options.map((opt) => (
-                <FormControlLabel
-                    key={opt.NumberId}
-                    value={String(opt.NumberId)}
-                    control={<Radio color="primary" />}
-                    label={opt.Text}
-                    sx={{ mb: 0.5 }}
-                />
-            ))}
-        </RadioGroup>
-    );
-}
-
-function CheckboxField({
-                           options,
-                           value,
-                           onChange,
-                       }: {
-    options: QuizOption[];
-    value: Record<string, boolean>;
-    onChange: (v: Record<string, boolean>) => void;
-}) {
-    const toggle = (numberId: number) => {
-        const key = String(numberId);
-        onChange({ ...value, [key]: !value[key] });
-    };
-
-    return (
-        <FormGroup>
-            {options.map((opt) => (
-                <FormControlLabel
-                    key={opt.NumberId}
-                    control={
-                        <Checkbox
-                            checked={!!value[String(opt.NumberId)]}
-                            onChange={() => toggle(opt.NumberId)}
-                            color="primary"
-                        />
-                    }
-                    label={opt.Text}
-                    sx={{ mb: 0.5 }}
-                />
-            ))}
-        </FormGroup>
-    );
-}
-
-function SelectboxField({
-                            options,
-                            value,
-                            onChange,
-                        }: {
-    options: QuizOption[];
-    value: string;
-    onChange: (v: string) => void;
-}) {
-    return (
-        <FormControl fullWidth size="small">
-            <InputLabel>انتخاب کنید</InputLabel>
-            <Select
-                value={value}
-                label="انتخاب کنید"
-                onChange={(e) => onChange(e.target.value)}
-            >
-                {options.map((opt) => (
-                    <MenuItem key={opt.NumberId} value={String(opt.NumberId)}>
-                        {opt.Text}
-                    </MenuItem>
-                ))}
-            </Select>
-        </FormControl>
-    );
-}
-
-function MultiSelectboxField({
-                                 options,
-                                 value,
-                                 onChange,
-                             }: {
-    options: QuizOption[];
-    value: string[];
-    onChange: (v: string[]) => void;
-}) {
-    return (
-        <FormControl fullWidth size="small">
-            <InputLabel>انتخاب کنید (چندتایی)</InputLabel>
-            <Select
-                multiple
-                value={value}
-                input={<OutlinedInput label="انتخاب کنید (چندتایی)" />}
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                onChange={(e: any) => {
-                    const val: unknown = e.target.value;
-                    onChange(Array.isArray(val) ? val : []);
-                }}
-                renderValue={(selected) => (
-                    <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
-                        {(selected as string[]).map((id) => {
-                            const opt = options.find((o) => String(o.NumberId) === id);
-                            return opt ? (
-                                <Chip key={id} label={opt.Text} size="small" color="primary" />
-                            ) : null;
-                        })}
-                    </Box>
-                )}
-            >
-                {options.map((opt) => (
-                    <MenuItem key={opt.NumberId} value={String(opt.NumberId)}>
-                        {opt.Text}
-                    </MenuItem>
-                ))}
-            </Select>
-        </FormControl>
-    );
-}
 
 // ─── Main Component ───────────────────────────────────────────────────────────
 
