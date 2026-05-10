@@ -6,93 +6,122 @@ import rtlPlugin from '@mui/stylis-plugin-rtl';
 export const theme = createTheme({
     direction: 'rtl',
 
+    shape: {
+        borderRadius: 14,
+    },
+
     typography: {
         fontFamily: 'var(--font-iransansx)',
+
+        h1: {
+            fontWeight: 800,
+        },
+
+        h2: {
+            fontWeight: 700,
+        },
+
+        h3: {
+            fontWeight: 700,
+        },
+
+        button: {
+            fontWeight: 600,
+        },
     },
 
     palette: {
         mode: 'light',
 
-        // رنگ اصلی پروژه
         primary: {
-            main: '#1f8561',
-            light: '#42a5f5',
-            dark: '#1565c0',
+            main: '#06b6d4',
+            light: '#67e8f9',
+            dark: '#0891b2',
             contrastText: '#ffffff',
         },
 
-        // رنگ ثانویه
         secondary: {
-            main: '#9c27b0',
-            light: '#ba68c8',
-            dark: '#7b1fa2',
+            main: '#334155',
+            light: '#64748b',
+            dark: '#1e293b',
             contrastText: '#ffffff',
         },
 
-        // رنگ موفقیت
         success: {
-            main: '#2e7d32',
-            light: '#4caf50',
-            dark: '#1b5e20',
+            main: '#10b981',
+            light: '#6ee7b7',
+            dark: '#059669',
             contrastText: '#ffffff',
         },
 
-        // رنگ خطا
         error: {
-            main: '#d32f2f',
-            light: '#ef5350',
-            dark: '#c62828',
+            main: '#ef4444',
+            light: '#fca5a5',
+            dark: '#dc2626',
             contrastText: '#ffffff',
         },
 
-        // هشدار
         warning: {
-            main: '#ed6c02',
-            light: '#ff9800',
-            dark: '#e65100',
+            main: '#f59e0b',
+            light: '#fcd34d',
+            dark: '#d97706',
             contrastText: '#ffffff',
         },
 
-        // اطلاعات
         info: {
-            main: '#0288d1',
-            light: '#03a9f4',
-            dark: '#01579b',
+            main: '#0ea5e9',
+            light: '#7dd3fc',
+            dark: '#0284c7',
             contrastText: '#ffffff',
         },
 
-        // پس‌زمینه‌ها
         background: {
-            default: '#edecec',
+            default: '#f4f8fb',
             paper: '#ffffff',
         },
 
-        // رنگ متن
         text: {
-            primary: '#111111',
-            secondary: '#555555',
-            disabled: '#999999',
+            primary: '#0f172a',
+            secondary: '#475569',
+            disabled: '#94a3b8',
         },
 
-        // divider
-        divider: '#e0e0e0',
+        divider: 'rgba(15, 23, 42, 0.08)',
 
-        // اکشن‌ها
         action: {
-            active: '#1976d2',
-            hover: 'rgba(25, 118, 210, 0.08)',
-            selected: 'rgba(25, 118, 210, 0.16)',
-            disabled: 'rgba(0, 0, 0, 0.26)',
-            disabledBackground: 'rgba(0, 0, 0, 0.12)',
+            active: '#0891b2',
+
+            hover: 'rgba(6, 182, 212, 0.08)',
+
+            selected: 'rgba(6, 182, 212, 0.14)',
+
+            disabled: 'rgba(15, 23, 42, 0.26)',
+
+            disabledBackground: 'rgba(15, 23, 42, 0.08)',
         },
     },
 
     components: {
+
+        MuiCssBaseline: {
+            styleOverrides: {
+                body: {
+                    backgroundColor: '#f4f8fb',
+                },
+            },
+        },
+
         MuiButton: {
             styleOverrides: {
                 root: {
-                    borderRadius: 12,
+                    borderRadius: 14,
                     textTransform: 'none',
+                    fontWeight: 700,
+                    boxShadow: 'none',
+
+                    '&:hover': {
+                        boxShadow: 'none',
+                    },
                 },
             },
         },
@@ -100,7 +129,10 @@ export const theme = createTheme({
         MuiCard: {
             styleOverrides: {
                 root: {
-                    borderRadius: 16,
+                    borderRadius: 20,
+                    border: '1px solid rgba(15, 23, 42, 0.06)',
+                    boxShadow: '0 4px 20px rgba(15, 23, 42, 0.04)',
+                    backgroundImage: 'none',
                 },
             },
         },
@@ -113,11 +145,23 @@ export const theme = createTheme({
             },
         },
 
+        MuiAppBar: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: 'rgba(255,255,255,0.9)',
+                    backdropFilter: 'blur(12px)',
+                    color: '#0f172a',
+                    boxShadow: 'none',
+                    borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+                },
+            },
+        },
+
         MuiBottomNavigation: {
             styleOverrides: {
                 root: {
                     backgroundColor: '#ffffff',
-                    borderTop: '1px solid #e0e0e0',
+                    borderTop: '1px solid rgba(15, 23, 42, 0.06)',
                 },
             },
         },
@@ -125,22 +169,37 @@ export const theme = createTheme({
         MuiBottomNavigationAction: {
             styleOverrides: {
                 root: {
-                    color: '#777777',
+                    color: '#64748b',
 
                     '&.Mui-selected': {
-                        color: '#1976d2',
+                        color: '#06b6d4',
                     },
                 },
             },
         },
 
-        MuiAppBar: {
+        MuiOutlinedInput: {
             styleOverrides: {
                 root: {
-                    backgroundColor: '#ffffff',
-                    color: '#111111',
-                    boxShadow: 'none',
-                    borderBottom: '1px solid #e0e0e0',
+                    borderRadius: 14,
+
+                    '&:hover .MuiOutlinedInput-notchedOutline': {
+                        borderColor: '#06b6d4',
+                    },
+
+                    '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                        borderWidth: 2,
+                        borderColor: '#06b6d4',
+                    },
+                },
+            },
+        },
+
+        MuiChip: {
+            styleOverrides: {
+                root: {
+                    borderRadius: 10,
+                    fontWeight: 600,
                 },
             },
         },
@@ -151,4 +210,3 @@ export const cache = createCache({
     key: 'muirtl',
     stylisPlugins: [prefixer, rtlPlugin],
 });
-

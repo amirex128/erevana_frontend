@@ -18,7 +18,40 @@ export function PsychiatricSection({
   defaultExpanded?: boolean;
 }) {
   return (
-    <Accordion dir="rtl" defaultExpanded={defaultExpanded} sx={{ mb: 1 }}>
+    <Accordion dir="rtl" defaultExpanded={defaultExpanded}
+               sx={{
+                   mb: 3,
+                   borderColor: "divider",
+                   borderRadius: 3,
+                   transition: "box-shadow 0.2s",
+                   "&:hover": { boxShadow: 4 },
+                   "&::before": {
+                       display: "none",
+                   },
+                   // حالت عادی
+                   "&:first-of-type": {
+                       borderRadius: 3,
+                   },
+
+                   // حالت باز
+                   "&.Mui-expanded": {
+                       margin: 0,
+                       borderRadius: 3,
+                       marginBottom:3,
+                       paddingBottom:3,
+
+                   },
+
+                   "&.Mui-expanded:first-of-type": {
+                       margin: 0,
+                       borderRadius: 3,
+                       marginBottom:3,
+                       paddingBottom:3,
+
+                   },
+
+               }}
+    >
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
           <Chip label={number} size="small" color="primary" />

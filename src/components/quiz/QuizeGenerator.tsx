@@ -375,7 +375,7 @@ export default function QuizGenerator({ quizzes, setResults }: QuizGeneratorProp
             ))}
 
             {/* ── Submit ─────────────────────────────────────────────── */}
-            <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+            <Box sx={{ display: "flex", justifyContent: "center" }}>
                 <Button
                     variant="contained"
                     size="large"
