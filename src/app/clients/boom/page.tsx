@@ -1,5 +1,6 @@
-export default function BoomPage() {
-    return <div>
+// app/thought-record/page.tsx
+import ThoughtRecordJourney from './ThoughtRecordJourney';
 
-    </div>
+export default function ThoughtRecordPage() {
+    return <ThoughtRecordJourney />;
 }
