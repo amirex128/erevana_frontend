@@ -1,6 +1,7 @@
 // components/ThoughtRecordJourney.tsx
 'use client';
 
+import React from 'react';
 import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -15,12 +16,8 @@ import {
     Typography,
     Paper,
     Stack,
-    IconButton,
     LinearProgress,
     Alert,
-    Stepper,
-    Step as MuiStep,
-    StepLabel,
     Avatar,
     Chip,
 } from '@mui/material';
@@ -31,10 +28,11 @@ import {
     Search,
     Balance,
     Lightbulb,
-    Close,
     CheckCircle,
 } from '@mui/icons-material';
 import { thoughtRecordSchema, ThoughtRecordFormData, Step } from './thought-record';
+
+// ─── FIX 1: Import unused icons removed (Close, Stepper, MuiStep, StepLabel) ───
 
 const steps: Step[] = [
     {
@@ -93,8 +91,9 @@ const steps: Step[] = [
     },
 ];
 
-const getIcon = (iconName: string) => {
-    const icons: Record<string, JSX.Element> = {
+// ─── FIX 2: Return type changed from JSX.Element to React.ReactElement ───
+const getIcon = (iconName: string): React.ReactElement => {
+    const icons: Record<string, React.ReactElement> = {
         backpack: <Backpack />,
         heart: <FavoriteBorder />,
         cloud: <Cloud />,
@@ -102,7 +101,7 @@ const getIcon = (iconName: string) => {
         balance: <Balance />,
         lightbulb: <Lightbulb />,
     };
-    return icons[iconName] || <Lightbulb />;
+    return icons[iconName] ?? <Lightbulb />;
 };
 
 export default function ThoughtRecordJourney() {
@@ -114,6 +113,8 @@ export default function ThoughtRecordJourney() {
         control,
         handleSubmit,
         watch,
+        // ─── FIX 3: Added `trigger` for per-step field validation ───
+        trigger,
         formState: { errors },
     } = useForm<ThoughtRecordFormData>({
         resolver: zodResolver(thoughtRecordSchema),
@@ -133,8 +134,14 @@ export default function ThoughtRecordJourney() {
         setCurrentStep(null);
     };
 
-    const handleStepSubmit = (data: Partial<ThoughtRecordFormData>) => {
-        if (currentStep && data[currentStep.id]) {
+    // ─── FIX 4: Core bug fixed — was using handleSubmit() which validates ALL
+    //     fields at once, causing saves to silently fail for incomplete steps.
+    //     Now uses trigger(fieldName) to validate only the current step's field. ───
+    const handleStepSave = async () => {
+        if (!currentStep) return;
+
+        const isValid = await trigger(currentStep.id);
+        if (isValid) {
             setCompletedSteps((prev) => new Set(prev).add(currentStep.id));
             handleCloseDialog();
         }
@@ -165,8 +172,8 @@ export default function ThoughtRecordJourney() {
                     borderRadius: 3,
                 }}
             >
-                <Stack direction="row" spacing={2} alignItems="center" sx={{ mb: 2 }}>
-                    <Typography variant="body2" fontWeight={600}>
+                <Stack direction="row" spacing={2}  sx={{ mb: 2,alignItems:"center" }}>
+                    <Typography variant="body2" sx={{fontWeight:600}}>
                         پیشرفت شما
                     </Typography>
                     <Chip
@@ -231,7 +238,7 @@ export default function ThoughtRecordJourney() {
                                         },
                                     }}
                                 >
-                                    <Stack direction="row" spacing={2} alignItems="center">
+                                    <Stack direction="row" spacing={2} sx={{alignItems:"center"}}>
                                         <Avatar
                                             sx={{
                                                 bgcolor: step.color,
@@ -241,8 +248,8 @@ export default function ThoughtRecordJourney() {
                                         >
                                             {isCompleted ? <CheckCircle /> : getIcon(step.icon)}
                                         </Avatar>
-                                        <Box flex={1}>
-                                            <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 0.5 }}>
+                                        <Box sx={{flex:1}}>
+                                            <Stack direction="row" spacing={1} sx={{ mb: 0.5, alignItems:"center" }}>
                                                 <Chip
                                                     label={index + 1}
                                                     size="small"
@@ -252,7 +259,7 @@ export default function ThoughtRecordJourney() {
                                                         fontWeight: 700,
                                                     }}
                                                 />
-                                                <Typography variant="h6" fontWeight={700}>
+                                                <Typography variant="h6" sx={{fontWeight:"700"}}>
                                                     {step.title}
                                                 </Typography>
                                             </Stack>
@@ -288,28 +295,28 @@ export default function ThoughtRecordJourney() {
 
             <Dialog
                 open={openDialog}
-                onClose={(event, reason) => {
+                onClose={(_event, reason) => {
+                    // ─── FIX 5: `event` param renamed to `_event` to avoid
+                    //     unused variable warning ───
                     if (reason !== 'backdropClick' && reason !== 'escapeKeyDown') {
                         handleCloseDialog();
                     }
                 }}
                 maxWidth="sm"
                 fullWidth
-                disableEscapeKeyDown
-                PaperProps={{
-                    sx: { borderRadius: 3 },
-                }}
+                    sx={{ borderRadius: 3 }}
+
             >
                 {currentStep && (
                     <>
                         <DialogTitle>
-                            <Stack direction="row" justifyContent="space-between" alignItems="center">
-                                <Stack direction="row" spacing={2} alignItems="center">
+                            <Stack direction="row" sx={{justifyContent:"space-between", alignItems:"center"}}>
+                                <Stack direction="row" spacing={2} sx={{alignItems:"center"}} >
                                     <Avatar sx={{ bgcolor: currentStep.color }}>
                                         {getIcon(currentStep.icon)}
                                     </Avatar>
                                     <Box>
-                                        <Typography variant="h6" fontWeight={700}>
+                                        <Typography variant="h6" sx={{fontWeight:"700"}}>
                                             {currentStep.title}
                                         </Typography>
                                         <Typography variant="caption" color="text.secondary">
@@ -352,11 +359,13 @@ export default function ThoughtRecordJourney() {
                                     <Typography variant="body2">{currentStep.tip}</Typography>
                                 </Alert>
 
+                                {/* ─── FIX 4 (continued): Button now calls handleStepSave
+                                    instead of handleSubmit(handleStepSubmit) ─── */}
                                 <Button
                                     variant="contained"
                                     fullWidth
                                     size="large"
-                                    onClick={handleSubmit(handleStepSubmit)}
+                                    onClick={handleStepSave}
                                     disabled={!formValues[currentStep.id] || !!errors[currentStep.id]}
                                     sx={{
                                         py: 1.5,

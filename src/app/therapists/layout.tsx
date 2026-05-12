@@ -26,7 +26,7 @@ import {
     Person as PersonIcon,
 } from '@mui/icons-material'
 import Link from 'next/link'
-
+import AccessibilityNewIcon from '@mui/icons-material/AccessibilityNew';
 interface TherapistLayoutProps {
     children: ReactNode
 }
@@ -68,7 +68,14 @@ export default function TherapistLayout({ children }: TherapistLayoutProps) {
                     >
                         <MenuIcon />
                     </IconButton>
-
+                    <IconButton
+                        sx={{display:{xs:'none',sm:'inline'}}}
+                        edge="start"
+                        color="inherit"
+                        onClick={toggleDrawer(true)}
+                    >
+                        <AccessibilityNewIcon />
+                    </IconButton>
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                         <Typography variant="h6" sx={{ fontWeight: 600 }}>
                             همیار ذهن
