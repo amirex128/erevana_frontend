@@ -168,7 +168,7 @@ export default function ThoughtRecordJourney() {
                 sx={{
                     p: 3,
                     mb: 4,
-                    bgcolor: 'primary.50',
+                    bgcolor: (t)=>t.palette.grey.A100,
                     borderRadius: 3,
                 }}
             >
